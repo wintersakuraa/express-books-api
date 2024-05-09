@@ -10,6 +10,7 @@ export const errorHandlerMiddleware = (
 ) => {
   const status = error.status || error.statusCode || 500
   const message = error.message || 'Something went wrong'
+  const stack = process.env.NODE_ENV === 'development' ? error.stack : undefined
 
   logger.error(error)
 
@@ -17,6 +18,6 @@ export const errorHandlerMiddleware = (
     success: false,
     status,
     message: status < 500 ? message : 'Internal Server Error',
-    stack: process.env.NODE_ENV === 'development' ? error.stack : {},
+    stack,
   })
 }
