@@ -26,6 +26,7 @@ class AuthController {
     try {
       const payload: TokenPayload = req.res.locals.payload
       await authService.logout(payload.userId)
+      res.json({ success: true })
     } catch (e) {
       next(e)
     }
