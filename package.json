@@ -6,6 +6,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
+    "prebuild": "rimraf dist",
     "start:dev": "rimraf dist && tsc-watch --onSuccess 'yarn watch:server'",
     "watch:server": "nodemon 'src/app.ts' --watch './src'",
     "build": "npx tsc",
