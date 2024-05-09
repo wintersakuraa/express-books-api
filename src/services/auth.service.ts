@@ -61,8 +61,8 @@ class AuthService {
     }
 
     const user = await userRespository.getById(payload.userId)
-    if (!user) {
-      throw new InvalidCredentialsError()
+    if (!user || !user.refreshToken) {
+      throw new AccessDeniedError()
     }
 
     const refreshTokenMatches = await hasherService.compare(
