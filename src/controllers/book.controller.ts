@@ -42,7 +42,7 @@ class BookController {
   async delete(req: Request, res: Response, next: NextFunction) {
     try {
       await bookService.delete(req.params.id)
-      res.status(204).send()
+      res.sendStatus(204)
     } catch (e) {
       next(e)
     }
