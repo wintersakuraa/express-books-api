@@ -3,6 +3,7 @@ import 'dotenv/config'
 
 import cors from 'cors'
 import express, { Application, NextFunction, Request, Response } from 'express'
+import helmet from 'helmet'
 import swaggerUi from 'swagger-ui-express'
 
 import swaggerDocument from '../swagger.json'
@@ -24,6 +25,7 @@ const app: Application = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cors())
+app.use(helmet())
 app.use(transformResponseMiddleware)
 app.use(loggerMiddleware)
 
